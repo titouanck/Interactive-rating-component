@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="CSS/styles.css">
+	<script>
+		function rating_nextstep() {
+			document.querySelector('.rating-after').style.visibility = 'visible';
+		};
+
+		document.addEventListener('DOMContentLoaded', function() {
+			document.querySelector('.rating__submit').onclick = function() {
+				let number = 0;
+				if (document.querySelector('#rank-1').checked) {
+					number = document.querySelector('#rank-1').value;
+					rating_nextstep();
+				}
+				else if (document.querySelector('#rank-2').checked) {
+					number = document.querySelector('#rank-2').value;
+					rating_nextstep();
+				}
+				else if (document.querySelector('#rank-3').checked) {
+					number = document.querySelector('#rank-3').value;
+					rating_nextstep();
+				}
+				else if (document.querySelector('#rank-4').checked) {
+					number = document.querySelector('#rank-4').value;
+					rating_nextstep();
+				}
+				else if (document.querySelector('#rank-5').checked) {
+					number = document.querySelector('#rank-5').value;
+					rating_nextstep();
+				}
+				else
+				{
+					document.querySelector('.rating__ranks__rank-1').style.borderColor = 'red';
+					document.querySelector('.rating__ranks__rank-2').style.borderColor = 'red';
+					document.querySelector('.rating__ranks__rank-3').style.borderColor = 'red';
+					document.querySelector('.rating__ranks__rank-4').style.borderColor = 'red';
+					document.querySelector('.rating__ranks__rank-5').style.borderColor = 'red';
+					setTimeout(function() {
+						document.querySelector('.rating__ranks__rank-1').style.borderColor = 'transparent';
+						document.querySelector('.rating__ranks__rank-2').style.borderColor = 'transparent';
+						document.querySelector('.rating__ranks__rank-3').style.borderColor = 'transparent';
+						document.querySelector('.rating__ranks__rank-4').style.borderColor = 'transparent';
+						document.querySelector('.rating__ranks__rank-5').style.borderColor = 'transparent';
+					}, 2000);
+				}
+				document.querySelector('.rating__choice__number').innerHTML = number;
+			}
+		});
+	</script>
+	<title>Interactive rating component</title>
+</head>
+<body>
+	<div class="parent-container">
+		<div class="child-container">
+			<main>
+				<div class="rating rating-before">
+					<img class="rating__logo" src="images/icon-star.svg" alt="star">
+					<h1 class="rating__title">How did we do?</h1>
+					<p class="rating__description">
+						Please let us know how we did with your support
+						request. All feedback is appreciated to help us
+						improve our offering!
+					</p>
+					<form action="index.html" onsubmit="return false">
+						<div class="rating__ranks">
+							<input type="radio" name="ranks" id="rank-1" value="1" required>
+							<label class="rating__ranks__rank rating__ranks__rank-1" for="rank-1">1</label>
+							<input type="radio" name="ranks" id="rank-2" value="2">
+							<label class="rating__ranks__rank rating__ranks__rank-2" for="rank-2">2</label>
+							<input type="radio" name="ranks" id="rank-3" value="3">
+							<label class="rating__ranks__rank rating__ranks__rank-3" for="rank-3">3</label>
+							<input type="radio" name="ranks" id="rank-4" value="4">
+							<label class="rating__ranks__rank rating__ranks__rank-4" for="rank-4">4</label>
+							<input type="radio" name="ranks" id="rank-5" value="5">
+							<label class="rating__ranks__rank rating__ranks__rank-5" for="rank-5">5</label>
+						</div>
+						<input class="rating__submit" type="button" value="SUBMIT">
+					</form>
+				</div>
+				<div class="rating rating-after">
+					<img class="rating-after__logo" src="images/illustration-thank-you.svg" alt="Thank you illustration">
+					<span class="rating-after__choice">You selected <span class="rating__choice__number">0</span> out of 5</span>
+					<h1 class="rating__title rating-after__title">Thank you!</h1>
+					<p class="rating__description rating-after__description">
+						We appreciate you taking the time to give a rating.
+						If you ever need more support, don't hesitate to
+						get in touch!
+					</p>
+				</div>
+			</main>
+		</div>
+	</div>
+</body>
+</html>

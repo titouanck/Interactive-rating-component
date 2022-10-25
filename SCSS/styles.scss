@@ -1,0 +1,155 @@
+// Reset CSS
+@import url("https://cdn.jsdelivr.net/gh/jgthms/minireset.css@master/minireset.min.css");
+
+a {
+	text-decoration: none;
+}
+
+// Fonts and colors
+@import url('https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap');
+
+$cl-primary: hsl(25, 97%, 53%);
+$cl-secondary: hsl(0, 0%, 100%);
+$cl-paragraph: hsl(216, 12%, 54%);
+$cl-hover: #7d8896;
+$cl-ranks: #262f38;
+$cl-component-bg: #1e252f;
+$cl-bg: hsl(216, 12%, 8%);
+
+body {
+	font-size: 15.5px;
+	font-family: "Overpass", cursive, Arial, Helvetica, sans-serif;
+	background-color: $cl-bg;
+}
+
+// Vertical and horizontal alignement
+.parent-container {
+	display: table;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.child-container {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+main {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+// Before
+.rating {
+	display: inline-block;
+	text-align: left;
+	margin: 5px 20px;
+	width: 410px;
+	height: 410px;
+	padding: 30px;
+	background-color: $cl-component-bg;
+	border-radius: 20px;
+	filter: brightness(0.9);
+
+	&__logo {
+		padding: 10px;
+		background-color: $cl-ranks;
+		border-radius: 100%;
+	}
+
+	&__title {
+		color: $cl-secondary;
+		font-size: 26px;
+		margin: 15px 0px;
+	}
+
+	&__description {
+		color: $cl-paragraph;
+		line-height: 24px;
+	}
+
+	&__ranks {
+		margin: 30px 0px;
+		display: grid;
+		grid-template-columns: repeat(5, 1fr);
+		column-gap: 20px;
+		
+		&__rank {
+			color: $cl-paragraph;
+			font-weight: 700;
+			text-align: center;
+			background-color: $cl-ranks;
+			width: 100%;
+			padding: 15px 0px;
+			cursor: pointer;
+			border: 1px solid transparent;
+			border-radius: 100%;
+			transition: all 0.15s;
+
+			&:hover {
+				background-color: $cl-hover;
+				color: $cl-secondary;
+			}
+		}
+
+		input {
+			position: absolute;
+			pointer-events: none;
+			visibility: hidden;
+
+			&:checked + label {
+				color: $cl-secondary;
+				background-color: $cl-primary;
+			}
+		}
+	}
+
+	&__submit {
+		width: 100%;
+		height: 45px;
+		background-color: $cl-primary;
+		color: $cl-secondary;
+		font-weight: 700;
+		letter-spacing: 2px;
+		border: 0px;
+		border-radius: 25px;
+		cursor: pointer;
+		filter: brightness(0.9);
+		transition: all 0.3s;
+
+		&:hover {
+			background-color: $cl-secondary;
+			color: $cl-primary;
+		}
+	}
+}
+
+// After
+.rating-after {
+	position: absolute;
+	visibility: hidden;
+	text-align: center;
+
+	&__logo {
+		margin: 25px 0px;
+	}
+
+	&__choice {
+		display: block;
+		color: $cl-primary;
+		background-color: $cl-ranks;
+		padding: 7.5px 20px;
+		border-radius: 25px;
+		margin: auto;
+		width: fit-content;
+		margin-bottom: 30px;
+	}
+
+	&__title {
+		margin-bottom: 7.5px;
+	}
+}
